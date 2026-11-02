@@ -1,4 +1,3 @@
-
 async function fetchJobs(city) {
   const apiKey = process.env.RAPIDAPI_KEY;
 
@@ -7,45 +6,62 @@ async function fetchJobs(city) {
   }
 
   const query = encodeURIComponent(`Manual Testing jobs in ${city}`);
-
   const url =
     `https://jsearch.p.rapidapi.com/search-v2?query=${query}` +
-    `&page=1&num_pages=1&country=India&language=en&date_posted=3days`;
+    `&num_pages=1&country=in&language=en&date_posted=3days`;
 
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      "x-rapidapi-key": apiKey,
-      "x-rapidapi-host": "jsearch.p.rapidapi.com"
+  // Retry up to 3 times if the API is slow or temporarily unavailable
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      console.log(`API request attempt ${attempt} for ${city}`);
+
+      const response = await fetch(url, {
+        method: "GET",
+        signal: AbortSignal.timeout(30000),
+        headers: {
+          "x-rapidapi-key": apiKey,
+          "x-rapidapi-host": "jsearch.p.rapidapi.com"
+        }
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          `RapidAPI error ${response.status}: ${JSON.stringify(result)}`
+        );
+      }
+
+      // JSearch may return jobs inside data.jobs
+      if (Array.isArray(result.data?.jobs)) {
+        return result.data.jobs;
+      }
+
+      // Handle alternate response structures too
+      if (Array.isArray(result.data)) {
+        return result.data;
+      }
+
+      if (Array.isArray(result.jobs)) {
+        return result.jobs;
+      }
+
+      console.log(`No job array found in API response for ${city}.`);
+      return [];
+    } catch (error) {
+      console.log(`Attempt ${attempt} failed: ${error.message}`);
+
+      if (attempt === 3) {
+        console.log(`Skipping ${city} after 3 failed attempts.`);
+        return [];
+      }
+
+      // Wait before retrying
+      await new Promise(resolve => setTimeout(resolve, attempt * 5000));
     }
-  });
-
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      `RapidAPI error ${response.status}: ${JSON.stringify(result)}`
-    );
   }
 
-  let jobs = [];
-
-  if (Array.isArray(result.data)) {
-    jobs = result.data;
-  } else if (Array.isArray(result.data?.jobs)) {
-    jobs = result.data.jobs;
-  } else if (Array.isArray(result.jobs)) {
-    jobs = result.jobs;
-  }
-
-  if (jobs.length === 0) {
-    console.log(
-      `No jobs array found for ${city}. API response:`,
-      JSON.stringify(result).slice(0, 1500)
-    );
-  }
-
-  return jobs;
+  return [];
 }
 
 async function main() {
@@ -53,7 +69,7 @@ async function main() {
   let totalJobs = 0;
 
   for (const city of cities) {
-    console.log(`\nFetching jobs for ${city}...`);
+    console.log(`\n========== ${city} ==========`);
 
     const jobs = await fetchJobs(city);
 
@@ -64,24 +80,15 @@ async function main() {
       console.log("------------------------------");
       console.log("Job Title:", job.job_title || "Not available");
       console.log("Company:", job.employer_name || "Not available");
-
-      const location = [
-        job.job_city,
-        job.job_state,
-        job.job_country
-      ].filter(Boolean).join(", ");
-
-      console.log("Location:", location || city);
-      console.log(
-        "Apply Link:",
-        job.job_apply_link || job.job_google_link || "Not available"
-      );
+      console.log("Location:", job.job_location || job.job_city || city);
+      console.log("Posted:", job.job_posted_at || "Not available");
+      console.log("Apply Link:", job.job_apply_link || "Not available");
     }
   }
 
-  console.log("\n==============================");
+  console.log("\n================================");
   console.log(`Total jobs fetched: ${totalJobs}`);
-  console.log("==============================");
+  console.log("Job Agent completed.");
 }
 
 main().catch(error => {
