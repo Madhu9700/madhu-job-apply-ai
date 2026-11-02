@@ -12,7 +12,10 @@ const preferences = {
     "regression testing",
     "playwright automation",
     "qa automation",
-    "automation test engineer"
+    "automation test engineer",
+    "quality assurance",
+    "test engineer",
+    "quality analyst"
   ],
 
   primarySkills: [
@@ -22,7 +25,12 @@ const preferences = {
     "smoke testing",
     "playwright",
     "javascript",
-    "typescript"
+    "typescript",
+    "test case",
+    "test scenarios",
+    "bug tracking",
+    "defect management",
+    "api testing"
   ]
 };
 
@@ -35,7 +43,198 @@ function extractJobs(result) {
   if (Array.isArray(result.data?.jobs)) return result.data.jobs;
   if (Array.isArray(result.jobs)) return result.jobs;
   if (Array.isArray(result.job_results)) return result.job_results;
+  if (Array.isArray(result.results)) return result.results;
+
   return [];
+}
+
+function getJobLocation(job) {
+  return normalize(
+    job.job_location ||
+    [
+      job.job_city,
+      job.job_state,
+      job.job_country
+    ]
+      .filter(Boolean)
+      .join(" ")
+  );
+}
+
+function getJobText(job) {
+  return normalize(
+    `${job.job_title || ""} ${job.job_description || ""}`
+  );
+}
+
+function isRelevantRole(title) {
+  const normalizedTitle = normalize(title);
+
+  const excludedRoles = [
+    "senior manager",
+    "test manager",
+    "qa manager",
+    "engineering manager",
+    "director",
+    "intern",
+    "trainee"
+  ];
+
+  if (excludedRoles.some(role => normalizedTitle.includes(role))) {
+    return false;
+  }
+
+  return preferences.targetRoles.some(role =>
+    normalizedTitle.includes(normalize(role))
+  );
+}
+
+function extractExperienceRange(text) {
+  const normalizedText = normalize(text);
+
+  // Example: 4-6 years, 4 to 6 years
+  const rangeMatch = normalizedText.match(
+    /(\d+(?:\.\d+)?)\s*(?:to|-)\s*(\d+(?:\.\d+)?)\s*(?:years?|yrs?)/
+  );
+
+  if (rangeMatch) {
+    return {
+      min: Number(rangeMatch[1]),
+      max: Number(rangeMatch[2])
+    };
+  }
+
+  // Example: 5+ years, minimum 5 years
+  const plusMatch = normalizedText.match(
+    /(\d+(?:\.\d+)?)\s*\+\s*(?:years?|yrs?)/
+  );
+
+  if (plusMatch) {
+    return {
+      min: Number(plusMatch[1]),
+      max: Infinity
+    };
+  }
+
+  // Example: minimum 4 years experience
+  const minimumMatch = normalizedText.match(
+    /(?:minimum|min)\s*(\d+(?:\.\d+)?)\s*(?:years?|yrs?)/
+  );
+
+  if (minimumMatch) {
+    return {
+      min: Number(minimumMatch[1]),
+      max: Infinity
+    };
+  }
+
+  // Example: 4 years experience
+  const singleMatch = normalizedText.match(
+    /(\d+(?:\.\d+)?)\s*(?:years?|yrs?)\s*(?:of\s*)?(?:experience|exp)/
+  );
+
+  if (singleMatch) {
+    const years = Number(singleMatch[1]);
+
+    return {
+      min: years,
+      max: years
+    };
+  }
+
+  return null;
+}
+
+function calculateJobMatch(job, cityPriority) {
+  const title = normalize(job.job_title);
+  const description = normalize(job.job_description);
+  const location = getJobLocation(job);
+  const fullText = `${title} ${description}`;
+
+  const roleMatch = isRelevantRole(title);
+
+  const roleScore = roleMatch ? 30 : 0;
+
+  const matchedSkills = preferences.primarySkills.filter(skill =>
+    fullText.includes(normalize(skill))
+  );
+
+  const skillScore = Math.round(
+    (matchedSkills.length / preferences.primarySkills.length) * 35
+  );
+
+  const experienceRange = extractExperienceRange(fullText);
+
+  let experienceMatch = true;
+  let experienceScore = 20;
+  let experienceReason = "Experience requirement not specified";
+
+  if (experienceRange) {
+    experienceMatch =
+      preferences.experienceYears >= experienceRange.min &&
+      preferences.experienceYears <= experienceRange.max;
+
+    experienceScore = experienceMatch ? 20 : 0;
+
+    experienceReason = experienceMatch
+      ? `Experience matched: ${experienceRange.min}-${experienceRange.max} years`
+      : `Experience mismatch: required ${experienceRange.min}-${experienceRange.max} years`;
+  }
+
+  const locationMatch = preferences.locations.some(city =>
+    location.includes(normalize(city))
+  );
+
+  const locationScore = locationMatch ? 15 : 0;
+
+  const totalScore = Math.min(
+    100,
+    Math.round(roleScore + skillScore + experienceScore + locationScore)
+  );
+
+  const reasons = [];
+
+  if (!roleMatch) {
+    reasons.push("Role does not match target roles");
+  }
+
+  if (!locationMatch) {
+    reasons.push(`Location not matched: ${location || "Unknown"}`);
+  }
+
+  if (!experienceMatch) {
+    reasons.push(experienceReason);
+  }
+
+  if (totalScore < preferences.minimumMatchScore) {
+    reasons.push(
+      `Score below threshold: ${totalScore}/${preferences.minimumMatchScore}`
+    );
+  }
+
+  if (reasons.length === 0) {
+    reasons.push("Meets current matching criteria");
+  }
+
+  return {
+    title: job.job_title || "Not available",
+    company: job.employer_name || "Not available",
+    location: job.job_location || job.job_city || "Not available",
+    matchScore: totalScore,
+    matchedSkills,
+    applyLink: job.job_apply_link || job.job_google_link || "",
+    cityPriority,
+    roleMatch,
+    locationMatch,
+    experienceMatch,
+    experienceReason,
+    qualifies:
+      totalScore >= preferences.minimumMatchScore &&
+      roleMatch &&
+      locationMatch &&
+      experienceMatch,
+    reasons
+  };
 }
 
 async function fetchJobs(city) {
@@ -72,7 +271,13 @@ async function fetchJobs(city) {
         );
       }
 
-      return extractJobs(result);
+      const jobs = extractJobs(result);
+
+      if (!Array.isArray(jobs)) {
+        throw new Error("Unexpected API response format.");
+      }
+
+      return jobs;
     } catch (error) {
       console.log(`${city} attempt ${attempt}: ${error.message}`);
 
@@ -88,76 +293,6 @@ async function fetchJobs(city) {
   }
 
   return [];
-}
-
-function calculateJobMatch(job, cityPriority) {
-  const title = normalize(job.job_title);
-  const description = normalize(job.job_description);
-  const location = normalize(
-    job.job_location ||
-    [job.job_city, job.job_state, job.job_country]
-      .filter(Boolean)
-      .join(" ")
-  );
-
-  const text = `${title} ${description}`;
-
-  const roleMatch = preferences.targetRoles.some(role =>
-    title.includes(role)
-  );
-
-  const roleScore = roleMatch ? 20 : 0;
-
-  const matchedSkills = preferences.primarySkills.filter(skill =>
-    text.includes(skill)
-  );
-
-  const skillScore =
-    (matchedSkills.length / preferences.primarySkills.length) * 40;
-
-  const expText = `${title} ${description}`;
-
-  const expMatch = expText.match(
-    /(\d+(?:\.\d+)?)\s*(?:\+|to|-)?\s*(\d+(?:\.\d+)?)?\s*(?:years?|yrs?)\s*(?:of)?\s*(?:experience|exp)?/i
-  );
-
-  let experienceMatch = true;
-
-  if (expMatch) {
-    const minExp = Number(expMatch[1]);
-    const maxExp = expMatch[2] ? Number(expMatch[2]) : minExp;
-
-    experienceMatch =
-      preferences.experienceYears >= minExp &&
-      preferences.experienceYears <= maxExp;
-  }
-
-  const experienceScore = experienceMatch ? 25 : 0;
-
-  const locationMatch = preferences.locations.some(city =>
-    location.includes(normalize(city))
-  );
-
-  const locationScore = locationMatch ? 15 : 0;
-
-  const totalScore = Math.round(
-    roleScore + skillScore + experienceScore + locationScore
-  );
-
-  return {
-    title: job.job_title || "Not available",
-    company: job.employer_name || "Not available",
-    location: job.job_location || job.job_city || "Not available",
-    matchScore: totalScore,
-    matchedSkills,
-    applyLink: job.job_apply_link || job.job_google_link || "",
-    cityPriority,
-    qualifies:
-      totalScore >= preferences.minimumMatchScore &&
-      roleMatch &&
-      locationMatch &&
-      experienceMatch
-  };
 }
 
 async function main() {
@@ -183,17 +318,40 @@ async function main() {
     }
   }
 
+  // Remove duplicate jobs
   const uniqueJobs = [
     ...new Map(
       allJobs.map(job => [
-        `${normalize(job.job_title)}-${normalize(job.employer_name)}-${normalize(job.job_location)}`,
+        normalize(
+          job.job_id ||
+          `${job.job_title}-${job.employer_name}-${job.job_location}-${job.job_apply_link}`
+        ),
         job
       ])
     ).values()
   ];
 
-  const matchedJobs = uniqueJobs
-    .map(job => calculateJobMatch(job, job.cityPriority))
+  // Calculate score for every job
+  const scoredJobs = uniqueJobs.map(job =>
+    calculateJobMatch(job, job.cityPriority)
+  );
+
+  // Print all jobs and their matching reasons
+  console.log("\n========== JOB MATCH ANALYSIS ==========");
+
+  scoredJobs.forEach((job, index) => {
+    console.log(`\n--- Job ${index + 1} ---`);
+    console.log(`Title: ${job.title}`);
+    console.log(`Company: ${job.company}`);
+    console.log(`Location: ${job.location}`);
+    console.log(`Match Score: ${job.matchScore}%`);
+    console.log(`Matched Skills: ${job.matchedSkills.join(", ") || "None"}`);
+    console.log(`Status: ${job.qualifies ? "MATCHED" : "NOT MATCHED"}`);
+    console.log(`Reason: ${job.reasons.join(" | ")}`);
+    console.log(`Apply Link: ${job.applyLink}`);
+  });
+
+  const matchedJobs = scoredJobs
     .filter(job => job.qualifies)
     .sort((a, b) => {
       if (a.cityPriority !== b.cityPriority) {
@@ -203,15 +361,19 @@ async function main() {
       return b.matchScore - a.matchScore;
     });
 
-  console.log("\n==============================");
+  console.log("\n========================================");
   console.log(`Total jobs fetched: ${uniqueJobs.length}`);
   console.log(`Matching jobs: ${matchedJobs.length}`);
-  console.log("==============================\n");
+  console.log("========================================\n");
 
   if (matchedJobs.length === 0) {
-    console.log("No jobs met the current matching criteria.");
+    console.log(
+      "No jobs met the current matching criteria. Review JOB MATCH ANALYSIS above."
+    );
     return;
   }
+
+  console.log("========== MATCHED JOBS ==========\n");
 
   matchedJobs.forEach((job, index) => {
     console.log(`--- Match ${index + 1} ---`);
