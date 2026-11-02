@@ -1,4 +1,3 @@
-
 async function fetchJobs(city) {
   const apiKey = process.env.RAPIDAPI_KEY;
 
@@ -6,11 +5,13 @@ async function fetchJobs(city) {
     throw new Error("RAPIDAPI_KEY GitHub Secret is missing.");
   }
 
-  const query = encodeURIComponent(`Manual Testing jobs in ${city}`);
+  const query = encodeURIComponent(
+    `Manual Testing jobs in ${city}`
+  );
 
   const url =
     `https://jsearch.p.rapidapi.com/search-v2?query=${query}` +
-    `&page=1&num_pages=1&country=in&language=en&date_posted=3days`;
+    `&num_pages=1&country=in&language=en&date_posted=3days`;
 
   const response = await fetch(url, {
     method: "GET",
@@ -32,10 +33,31 @@ async function fetchJobs(city) {
     return result.data;
   }
 
-  console.log(
-    `Unexpected API response for ${city}:`,
-    JSON.stringify(result).slice(0, 1000)
-  );
-
+  console.log("Unexpected API response:", JSON.stringify(result));
   return [];
 }
+
+async function main() {
+  const cities = ["Chennai", "Bengaluru", "Hyderabad"];
+
+  for (const city of cities) {
+    console.log(`\nFetching jobs for ${city}...`);
+
+    const jobs = await fetchJobs(city);
+
+    console.log(`Fetched ${jobs.length} jobs from ${city}`);
+
+    for (const job of jobs) {
+      console.log("------------------------------");
+      console.log("Job Title:", job.job_title || "Not available");
+      console.log("Company:", job.employer_name || "Not available");
+      console.log("Location:", job.job_city || city);
+      console.log("Apply Link:", job.job_apply_link || "Not available");
+    }
+  }
+}
+
+main().catch(error => {
+  console.error("Job Agent failed:", error.message);
+  process.exit(1);
+});
