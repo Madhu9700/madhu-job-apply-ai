@@ -1,0 +1,13 @@
+
+{
+  "name": "madhu-job-apply-ai",
+  "version": "1.0.0",
+  "description": "AI job matching and application tracker for Manual Testing and Playwright roles",
+  "main": "job-matcher.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node job-matcher.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
