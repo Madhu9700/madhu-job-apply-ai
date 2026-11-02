@@ -1,0 +1,37 @@
+
+{
+  "agent_name": "Madhu JobApply AI",
+  "portal": "Naukri",
+  "application_mode": "auto_apply",
+  "experience_years": 4.7,
+  "preferred_locations": [
+    "Chennai",
+    "Bengaluru",
+    "Hyderabad"
+  ],
+  "location_priority": [
+    1,
+    2,
+    3
+  ],
+  "target_roles": [
+    "Manual Testing Engineer",
+    "QA Engineer",
+    "Playwright Automation Engineer",
+    "QA Automation Engineer",
+    "Software Test Engineer"
+  ],
+  "primary_skills": [
+    "Manual Testing",
+    "Playwright",
+    "JavaScript",
+    "TypeScript"
+  ],
+  "exclude_skills": [
+    "Selenium"
+  ],
+  "minimum_match_score": 75,
+  "resume_file": "V Madhu Prasad_QA Engineer.pdf",
+  "duplicate_application_check": true,
+  "daily_report": true
+}
