@@ -1,7 +1,7 @@
 const preferences = {
   experienceYears: 4.7,
   locations: ["Chennai", "Bengaluru", "Hyderabad"],
-  minimumMatchScore: 75,
+  minimumMatchScore: 60,
 
   targetRoles: [
     "manual tester",
