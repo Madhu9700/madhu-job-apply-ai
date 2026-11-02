@@ -3,6 +3,13 @@ const preferences = {
   locations: ["Chennai", "Bengaluru", "Hyderabad"],
   minimumMatchScore: 60,
 
+  searchRoles: [
+    "Manual Tester 4 to 5 years",
+    "QA Engineer 4 to 5 years",
+    "Functional Testing Engineer",
+    "Playwright QA Engineer"
+  ],
+
   targetRoles: [
     "manual tester",
     "manual testing",
@@ -92,7 +99,7 @@ function isRelevantRole(title) {
 function extractExperienceRange(text) {
   const normalizedText = normalize(text);
 
-  // Example: 4-6 years, 4 to 6 years
+  // Example: 4-6 years or 4 to 6 years
   const rangeMatch = normalizedText.match(
     /(\d+(?:\.\d+)?)\s*(?:to|-)\s*(\d+(?:\.\d+)?)\s*(?:years?|yrs?)/
   );
@@ -104,7 +111,7 @@ function extractExperienceRange(text) {
     };
   }
 
-  // Example: 5+ years, minimum 5 years
+  // Example: 5+ years
   const plusMatch = normalizedText.match(
     /(\d+(?:\.\d+)?)\s*\+\s*(?:years?|yrs?)/
   );
@@ -116,7 +123,7 @@ function extractExperienceRange(text) {
     };
   }
 
-  // Example: minimum 4 years experience
+  // Example: minimum 4 years
   const minimumMatch = normalizedText.match(
     /(?:minimum|min)\s*(\d+(?:\.\d+)?)\s*(?:years?|yrs?)/
   );
@@ -152,7 +159,6 @@ function calculateJobMatch(job, cityPriority) {
   const fullText = `${title} ${description}`;
 
   const roleMatch = isRelevantRole(title);
-
   const roleScore = roleMatch ? 30 : 0;
 
   const matchedSkills = preferences.primarySkills.filter(skill =>
@@ -227,7 +233,6 @@ function calculateJobMatch(job, cityPriority) {
     roleMatch,
     locationMatch,
     experienceMatch,
-    experienceReason,
     qualifies:
       totalScore >= preferences.minimumMatchScore &&
       roleMatch &&
@@ -237,16 +242,14 @@ function calculateJobMatch(job, cityPriority) {
   };
 }
 
-async function fetchJobs(city) {
+async function fetchJobs(city, searchRole) {
   const apiKey = process.env.RAPIDAPI_KEY;
 
   if (!apiKey) {
     throw new Error("RAPIDAPI_KEY GitHub Secret is missing.");
   }
 
-  const query = encodeURIComponent(
-    `Manual Testing QA Playwright jobs in ${city}`
-  );
+  const query = encodeURIComponent(`${searchRole} jobs in ${city}`);
 
   const url =
     `https://jsearch.p.rapidapi.com/search-v2?query=${query}` +
@@ -271,18 +274,14 @@ async function fetchJobs(city) {
         );
       }
 
-      const jobs = extractJobs(result);
-
-      if (!Array.isArray(jobs)) {
-        throw new Error("Unexpected API response format.");
-      }
-
-      return jobs;
+      return extractJobs(result);
     } catch (error) {
-      console.log(`${city} attempt ${attempt}: ${error.message}`);
+      console.log(
+        `${city} | ${searchRole} | attempt ${attempt}: ${error.message}`
+      );
 
       if (attempt === 3) {
-        console.log(`Skipping ${city} after retries.`);
+        console.log(`Skipping search: ${searchRole} in ${city}`);
         return [];
       }
 
@@ -297,46 +296,52 @@ async function fetchJobs(city) {
 
 async function main() {
   console.log("Starting Job Matcher...\n");
+  console.log(`Minimum match score: ${preferences.minimumMatchScore}%`);
 
   const allJobs = [];
 
-  for (let i = 0; i < preferences.locations.length; i++) {
-    const city = preferences.locations[i];
+  // Chennai first, Bengaluru second, Hyderabad third
+  for (let cityIndex = 0; cityIndex < preferences.locations.length; cityIndex++) {
+    const city = preferences.locations[cityIndex];
 
-    console.log(`Fetching jobs for ${city}...`);
+    console.log(`\n========== ${city.toUpperCase()} ==========`);
 
-    const jobs = await fetchJobs(city);
+    for (const searchRole of preferences.searchRoles) {
+      console.log(`Searching: ${searchRole} in ${city}`);
 
-    console.log(`Fetched ${jobs.length} jobs from ${city}`);
+      const jobs = await fetchJobs(city, searchRole);
 
-    for (const job of jobs) {
-      allJobs.push({
-        ...job,
-        searchCity: city,
-        cityPriority: i
-      });
+      console.log(`Fetched ${jobs.length} jobs`);
+
+      for (const job of jobs) {
+        allJobs.push({
+          ...job,
+          searchCity: city,
+          cityPriority: cityIndex
+        });
+      }
     }
   }
 
-  // Remove duplicate jobs
+  // Deduplicate using job ID, apply URL, or title/company/location
   const uniqueJobs = [
     ...new Map(
-      allJobs.map(job => [
-        normalize(
+      allJobs.map(job => {
+        const key = normalize(
           job.job_id ||
-          `${job.job_title}-${job.employer_name}-${job.job_location}-${job.job_apply_link}`
-        ),
-        job
-      ])
+          job.job_apply_link ||
+          `${job.job_title}-${job.employer_name}-${job.job_location}`
+        );
+
+        return [key, job];
+      })
     ).values()
   ];
 
-  // Calculate score for every job
   const scoredJobs = uniqueJobs.map(job =>
     calculateJobMatch(job, job.cityPriority)
   );
 
-  // Print all jobs and their matching reasons
   console.log("\n========== JOB MATCH ANALYSIS ==========");
 
   scoredJobs.forEach((job, index) => {
@@ -363,12 +368,12 @@ async function main() {
 
   console.log("\n========================================");
   console.log(`Total jobs fetched: ${uniqueJobs.length}`);
-  console.log(`Matching jobs: ${matchedJobs.length}`);
+  console.log(`Matching jobs (60%+): ${matchedJobs.length}`);
   console.log("========================================\n");
 
   if (matchedJobs.length === 0) {
     console.log(
-      "No jobs met the current matching criteria. Review JOB MATCH ANALYSIS above."
+      "No jobs met the current matching criteria. Review the analysis above."
     );
     return;
   }
