@@ -1,3 +1,5 @@
+const fs = require("node:fs");
+
 const preferences = {
   experienceYears: 4.7,
   locations: ["Chennai", "Bengaluru", "Hyderabad"],
@@ -68,12 +70,6 @@ function getJobLocation(job) {
   );
 }
 
-function getJobText(job) {
-  return normalize(
-    `${job.job_title || ""} ${job.job_description || ""}`
-  );
-}
-
 function isRelevantRole(title) {
   const normalizedTitle = normalize(title);
 
@@ -99,7 +95,6 @@ function isRelevantRole(title) {
 function extractExperienceRange(text) {
   const normalizedText = normalize(text);
 
-  // Example: 4-6 years or 4 to 6 years
   const rangeMatch = normalizedText.match(
     /(\d+(?:\.\d+)?)\s*(?:to|-)\s*(\d+(?:\.\d+)?)\s*(?:years?|yrs?)/
   );
@@ -111,7 +106,6 @@ function extractExperienceRange(text) {
     };
   }
 
-  // Example: 5+ years
   const plusMatch = normalizedText.match(
     /(\d+(?:\.\d+)?)\s*\+\s*(?:years?|yrs?)/
   );
@@ -123,7 +117,6 @@ function extractExperienceRange(text) {
     };
   }
 
-  // Example: minimum 4 years
   const minimumMatch = normalizedText.match(
     /(?:minimum|min)\s*(\d+(?:\.\d+)?)\s*(?:years?|yrs?)/
   );
@@ -135,7 +128,6 @@ function extractExperienceRange(text) {
     };
   }
 
-  // Example: 4 years experience
   const singleMatch = normalizedText.match(
     /(\d+(?:\.\d+)?)\s*(?:years?|yrs?)\s*(?:of\s*)?(?:experience|exp)/
   );
@@ -300,8 +292,11 @@ async function main() {
 
   const allJobs = [];
 
-  // Chennai first, Bengaluru second, Hyderabad third
-  for (let cityIndex = 0; cityIndex < preferences.locations.length; cityIndex++) {
+  for (
+    let cityIndex = 0;
+    cityIndex < preferences.locations.length;
+    cityIndex++
+  ) {
     const city = preferences.locations[cityIndex];
 
     console.log(`\n========== ${city.toUpperCase()} ==========`);
@@ -323,7 +318,6 @@ async function main() {
     }
   }
 
-  // Deduplicate using job ID, apply URL, or title/company/location
   const uniqueJobs = [
     ...new Map(
       allJobs.map(job => {
@@ -365,6 +359,21 @@ async function main() {
 
       return b.matchScore - a.matchScore;
     });
+
+  // Save matching jobs for the dashboard
+  const dashboardData = {
+    generatedAt: new Date().toISOString(),
+    totalJobsFetched: uniqueJobs.length,
+    matchingJobs: matchedJobs.length,
+    jobs: matchedJobs
+  };
+
+  fs.writeFileSync(
+    "jobs.json",
+    JSON.stringify(dashboardData, null, 2)
+  );
+
+  console.log("\nDashboard data saved to jobs.json");
 
   console.log("\n========================================");
   console.log(`Total jobs fetched: ${uniqueJobs.length}`);
