@@ -1,8 +1,9 @@
-
 name: Job Agent
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "30 3 * * *"
 
 jobs:
   job-matching:
@@ -21,4 +22,3 @@ jobs:
         env:
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
         run: node job-matcher.js
-        
