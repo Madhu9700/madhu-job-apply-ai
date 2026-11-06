@@ -286,6 +286,56 @@ async function fetchJobs(city, searchRole) {
   return [];
 }
 
+function escapeCSV(value) {
+  return `"${String(value ?? "").replace(/"/g, '""')}"`;
+}
+
+function saveMatchedJobsCSV(matchedJobs) {
+  const csvHeader = [
+    "Title",
+    "Company",
+    "Location",
+    "Match Score",
+    "Matched Skills",
+    "Apply Link"
+  ];
+
+  const csvRows = matchedJobs.map(job => [
+    job.title,
+    job.company,
+    job.location,
+    `${job.matchScore}%`,
+    job.matchedSkills.join(", "),
+    job.applyLink
+  ]);
+
+  const csvContent = [
+    csvHeader.map(escapeCSV).join(","),
+    ...csvRows.map(row => row.map(escapeCSV).join(","))
+  ].join("\n");
+
+  fs.writeFileSync("matched-jobs.csv", csvContent, "utf8");
+
+  console.log("CSV file saved: matched-jobs.csv");
+}
+
+function saveDashboardJSON(uniqueJobs, matchedJobs) {
+  const dashboardData = {
+    generatedAt: new Date().toISOString(),
+    totalJobsFetched: uniqueJobs.length,
+    matchingJobs: matchedJobs.length,
+    jobs: matchedJobs
+  };
+
+  fs.writeFileSync(
+    "jobs.json",
+    JSON.stringify(dashboardData, null, 2),
+    "utf8"
+  );
+
+  console.log("Dashboard data saved: jobs.json");
+}
+
 async function main() {
   console.log("Starting Job Matcher...\n");
   console.log(`Minimum match score: ${preferences.minimumMatchScore}%`);
@@ -360,20 +410,9 @@ async function main() {
       return b.matchScore - a.matchScore;
     });
 
-  // Save matching jobs for the dashboard
-  const dashboardData = {
-    generatedAt: new Date().toISOString(),
-    totalJobsFetched: uniqueJobs.length,
-    matchingJobs: matchedJobs.length,
-    jobs: matchedJobs
-  };
-
-  fs.writeFileSync(
-    "jobs.json",
-    JSON.stringify(dashboardData, null, 2)
-  );
-
-  console.log("\nDashboard data saved to jobs.json");
+  // Save results for CSV and dashboard
+  saveMatchedJobsCSV(matchedJobs);
+  saveDashboardJSON(uniqueJobs, matchedJobs);
 
   console.log("\n========================================");
   console.log(`Total jobs fetched: ${uniqueJobs.length}`);
