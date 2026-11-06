@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Job Match Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Match Dashboard</title>
 
   <style>
     * {
@@ -13,182 +13,223 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f6fb;
-      color: #1f2937;
+      background: #f4f7fb;
+      color: #172033;
     }
 
     header {
-      background: linear-gradient(135deg, #172554, #2563eb);
+      background: #14213d;
       color: white;
-      padding: 25px 16px;
+      padding: 24px 16px;
+      text-align: center;
     }
 
     header h1 {
-      margin: 0 0 8px;
-      font-size: 25px;
+      margin: 0;
+      font-size: 26px;
     }
 
     header p {
-      margin: 0;
-      color: #dbeafe;
-      font-size: 14px;
+      margin: 8px 0 0;
+      color: #dbe4f0;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
-      padding: 16px;
+      padding: 20px 14px;
     }
 
-    .stats {
+    .summary {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-top: -5px;
       margin-bottom: 20px;
     }
 
-    .stat-card {
+    .summary-card {
       background: white;
-      padding: 18px;
+      padding: 18px 12px;
       border-radius: 12px;
       box-shadow: 0 2px 8px #0000000a;
+      text-align: center;
     }
 
-    .stat-card span {
-      display: block;
+    .summary-card h2 {
+      margin: 0;
+      color: #2563eb;
+      font-size: 25px;
+    }
+
+    .summary-card p {
+      margin: 8px 0 0;
+      font-size: 12px;
       color: #64748b;
-      font-size: 13px;
-      margin-bottom: 8px;
     }
 
-    .stat-card strong {
-      font-size: 26px;
-      color: #1d4ed8;
-    }
-
-    .filters {
+    .toolbar {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
+      flex-wrap: wrap;
       margin-bottom: 18px;
     }
 
     input,
-    select {
+    select,
+    button {
       padding: 12px;
-      border: 1px solid #d1d5db;
       border-radius: 8px;
-      background: white;
+      border: 1px solid #d5dce8;
       font-size: 14px;
-      min-width: 0;
     }
 
-    input {
-      flex: 1;
-      width: 100%;
-    }
-
+    input,
     select {
-      width: 100%;
+      background: white;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #1d4ed8;
     }
 
     .job-card {
       background: white;
-      padding: 18px;
       border-radius: 12px;
+      padding: 18px;
       margin-bottom: 14px;
       box-shadow: 0 2px 8px #0000000a;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e5eaf2;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
     }
 
     .job-title {
       font-size: 18px;
       font-weight: bold;
       margin: 0 0 8px;
-      color: #111827;
     }
 
     .company {
-      color: #4b5563;
-      margin-bottom: 10px;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+
+    .location {
+      color: #64748b;
       font-size: 14px;
     }
 
-    .job-details {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 12px 0;
-    }
-
-    .tag {
-      background: #eff6ff;
-      color: #1d4ed8;
-      padding: 6px 9px;
-      border-radius: 6px;
-      font-size: 12px;
-    }
-
     .score {
-      color: #15803d;
       background: #dcfce7;
+      color: #166534;
       font-weight: bold;
+      padding: 8px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
     }
 
     .skills {
-      color: #64748b;
+      margin-top: 14px;
       font-size: 13px;
+      color: #475569;
       line-height: 1.6;
-      margin: 12px 0;
+    }
+
+    .job-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
     }
 
     .apply-button {
       display: inline-block;
-      background: #2563eb;
+      background: #16a34a;
       color: white;
       text-decoration: none;
       padding: 11px 16px;
       border-radius: 8px;
       font-size: 14px;
       font-weight: bold;
-      margin-top: 5px;
     }
 
     .apply-button:hover {
-      background: #1d4ed8;
+      background: #15803d;
     }
 
-    .empty {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
+    .details-button {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    .details-button:hover {
+      background: #cbd5e1;
+    }
+
+    .details {
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    .details.show {
+      display: block;
+    }
+
+    .message {
       text-align: center;
+      background: white;
+      padding: 28px 16px;
+      border-radius: 12px;
       color: #64748b;
     }
 
-    .updated {
+    footer {
+      text-align: center;
       color: #64748b;
       font-size: 12px;
-      margin: 18px 0;
-      text-align: center;
+      padding: 24px 12px;
     }
 
-    .error {
-      color: #b91c1c;
-      background: #fee2e2;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    @media (min-width: 600px) {
-      .stats {
-        grid-template-columns: repeat(3, 1fr);
+    @media (max-width: 600px) {
+      .summary {
+        grid-template-columns: 1fr 1fr;
       }
 
-      select {
-        width: auto;
+      .summary-card:last-child {
+        grid-column: span 2;
+      }
+
+      .job-header {
+        flex-direction: column;
+      }
+
+      .score {
+        align-self: flex-start;
+      }
+
+      header h1 {
+        font-size: 22px;
       }
     }
   </style>
@@ -196,70 +237,68 @@
 
 <body>
   <header>
-    <h1>My Job Match Dashboard</h1>
-    <p>Manual QA • Functional Testing • Playwright</p>
+    <h1>🎯 Job Match Dashboard</h1>
+    <p>Find QA & Manual Testing jobs that match your profile</p>
   </header>
 
   <main class="container">
-    <section class="stats">
-      <div class="stat-card">
-        <span>Total Matching Jobs</span>
-        <strong id="totalJobs">0</strong>
+    <section class="summary">
+      <div class="summary-card">
+        <h2 id="totalJobs">0</h2>
+        <p>Matching Jobs</p>
       </div>
 
-      <div class="stat-card">
-        <span>Best Match Score</span>
-        <strong id="bestScore">0%</strong>
+      <div class="summary-card">
+        <h2 id="bestScore">0%</h2>
+        <p>Best Match</p>
       </div>
 
-      <div class="stat-card">
-        <span>Last Updated</span>
-        <strong id="lastUpdated" style="font-size:15px;">Loading...</strong>
+      <div class="summary-card">
+        <h2 id="lastUpdated">--</h2>
+        <p>Last Updated</p>
       </div>
     </section>
 
-    <section class="filters">
+    <section class="toolbar">
       <input
-        type="search"
+        type="text"
         id="searchInput"
-        placeholder="Search job title or company..."
-      />
+        placeholder="Search job, company or skill..."
+      >
 
       <select id="locationFilter">
-        <option value="">All Locations</option>
+        <option value="all">All Locations</option>
         <option value="Chennai">Chennai</option>
         <option value="Bengaluru">Bengaluru</option>
         <option value="Hyderabad">Hyderabad</option>
       </select>
 
-      <select id="scoreFilter">
-        <option value="60">60%+ Match</option>
-        <option value="70">70%+ Match</option>
-        <option value="80">80%+ Match</option>
-        <option value="90">90%+ Match</option>
-      </select>
+      <button onclick="loadJobs()">Refresh Jobs</button>
     </section>
 
-    <div id="message"></div>
-    <section id="jobsList"></section>
-
-    <p class="updated">
-      Job data is updated when the GitHub Job Agent workflow runs.
-    </p>
+    <section id="jobsContainer">
+      <div class="message">Loading matching jobs...</div>
+    </section>
   </main>
+
+  <footer>
+    Job Match Dashboard | Apply manually through the job application link
+  </footer>
 
   <script>
     let allJobs = [];
 
     async function loadJobs() {
-      const message = document.getElementById("message");
-      const jobsList = document.getElementById("jobsList");
+      const container = document.getElementById("jobsContainer");
+
+      container.innerHTML =
+        '<div class="message">Loading latest job matches...</div>';
 
       try {
-        const response = await fetch("./jobs.json?updated=" + Date.now());
+        const response = await fetch("jobs.json?t=" + Date.now());
 
         if (!response.ok) {
-          throw new Error("Could not load jobs.json");
+          throw new Error("Unable to load jobs.json");
         }
 
         const data = await response.json();
@@ -267,7 +306,7 @@
         allJobs = Array.isArray(data.jobs) ? data.jobs : [];
 
         document.getElementById("totalJobs").textContent =
-          data.matchingJobs ?? allJobs.length;
+          allJobs.length;
 
         const bestScore = allJobs.length
           ? Math.max(...allJobs.map(job => Number(job.matchScore) || 0))
@@ -279,125 +318,134 @@
         document.getElementById("lastUpdated").textContent =
           data.generatedAt
             ? new Date(data.generatedAt).toLocaleString()
-            : "Not available";
+            : "--";
 
-        message.innerHTML = "";
         renderJobs();
-
       } catch (error) {
-        message.innerHTML = `
-          <div class="error">
-            Jobs data is not available yet.
-            Please check whether jobs.json exists in the repository.
+        container.innerHTML = `
+          <div class="message">
+            <h3>Jobs are not available yet</h3>
+            <p>Please run the GitHub Job Agent workflow first.</p>
+            <p>Make sure jobs.json is present in the repository.</p>
           </div>
         `;
-
-        jobsList.innerHTML = "";
       }
     }
 
     function renderJobs() {
+      const container = document.getElementById("jobsContainer");
       const searchText = document
         .getElementById("searchInput")
-        .value.toLowerCase()
+        .value
+        .toLowerCase()
         .trim();
 
-      const location = document
+      const selectedLocation = document
         .getElementById("locationFilter")
-        .value.toLowerCase();
+        .value;
 
-      const minimumScore = Number(
-        document.getElementById("scoreFilter").value
-      );
+      const filteredJobs = allJobs.filter(job => {
+        const searchableText = [
+          job.title,
+          job.company,
+          job.location,
+          ...(job.matchedSkills || [])
+        ]
+          .join(" ")
+          .toLowerCase();
 
-      const filteredJobs = allJobs
-        .filter(job => {
-          const title = (job.title || "").toLowerCase();
-          const company = (job.company || "").toLowerCase();
-          const jobLocation = (job.location || "").toLowerCase();
+        const matchesSearch = searchableText.includes(searchText);
 
-          const matchesSearch =
-            title.includes(searchText) ||
-            company.includes(searchText);
+        const matchesLocation =
+          selectedLocation === "all" ||
+          (job.location || "")
+            .toLowerCase()
+            .includes(selectedLocation.toLowerCase());
 
-          const matchesLocation =
-            !location || jobLocation.includes(location);
-
-          const matchesScore =
-            Number(job.matchScore) >= minimumScore;
-
-          return matchesSearch && matchesLocation && matchesScore;
-        })
-        .sort((a, b) => Number(b.matchScore) - Number(a.matchScore));
-
-      const jobsList = document.getElementById("jobsList");
+        return matchesSearch && matchesLocation;
+      });
 
       if (filteredJobs.length === 0) {
-        jobsList.innerHTML = `
-          <div class="empty">
-            No matching jobs found for these filters.
+        container.innerHTML = `
+          <div class="message">
+            <h3>No matching jobs found</h3>
+            <p>Try changing your search or location filter.</p>
           </div>
         `;
         return;
       }
 
-      jobsList.innerHTML = filteredJobs.map(job => {
-        const title = escapeHTML(job.title || "Job title unavailable");
-        const company = escapeHTML(job.company || "Company unavailable");
-        const locationText = escapeHTML(job.location || "Location unavailable");
+      container.innerHTML = filteredJobs.map((job, index) => {
+        const title = escapeHTML(job.title || "Job title not available");
+        const company = escapeHTML(job.company || "Company not available");
+        const location = escapeHTML(job.location || "Location not available");
         const score = Number(job.matchScore) || 0;
 
-        const skills = Array.isArray(job.matchedSkills)
-          ? job.matchedSkills.join(", ")
-          : "";
+        const skills = (job.matchedSkills || [])
+          .map(skill => escapeHTML(skill))
+          .join(", ") || "No matched skills listed";
 
         const applyLink = safeURL(job.applyLink);
 
+        const applyButton = applyLink
+          ? `<a class="apply-button"
+                href="${applyLink}"
+                target="_blank"
+                rel="noopener noreferrer">Apply Now ↗</a>`
+          : `<button disabled>No Apply Link</button>`;
+
         return `
           <article class="job-card">
-            <h2 class="job-title">${title}</h2>
+            <div class="job-header">
+              <div>
+                <h2 class="job-title">${title}</h2>
+                <div class="company">${company}</div>
+                <div class="location">📍 ${location}</div>
+              </div>
 
-            <div class="company">
-              ${company} • ${locationText}
-            </div>
-
-            <div class="job-details">
-              <span class="tag score">${score}% Match</span>
-              <span class="tag">QA / Testing</span>
+              <div class="score">${score}% Match</div>
             </div>
 
             <div class="skills">
-              <strong>Matched Skills:</strong>
-              ${escapeHTML(skills || "Not specified")}
+              <strong>Matched Skills:</strong> ${skills}
             </div>
 
-            ${
-              applyLink
-                ? `<a
-                    class="apply-button"
-                    href="${applyLink}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >View Job & Apply ↗</a>`
-                : `<span class="tag">Apply link unavailable</span>`
-            }
+            <div class="job-actions">
+              ${applyButton}
+              <button class="details-button"
+                onclick="toggleDetails(${index})">
+                View Details
+              </button>
+            </div>
+
+            <div class="details" id="details-${index}">
+              <strong>Match Reasons:</strong>
+              <ul>
+                ${(job.reasons || ["Meets matching criteria"])
+                  .map(reason => `<li>${escapeHTML(reason)}</li>`)
+                  .join("")}
+              </ul>
+            </div>
           </article>
         `;
       }).join("");
     }
 
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, character => {
-        const map = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;"
-        };
+    function toggleDetails(index) {
+      const details = document.getElementById("details-" + index);
 
-        return map[character];
-      });
+      if (details) {
+        details.classList.toggle("show");
+      }
+    }
+
+    function escapeHTML(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
     function safeURL(value) {
@@ -420,10 +468,6 @@
 
     document
       .getElementById("locationFilter")
-      .addEventListener("change", renderJobs);
-
-    document
-      .getElementById("scoreFilter")
       .addEventListener("change", renderJobs);
 
     loadJobs();
