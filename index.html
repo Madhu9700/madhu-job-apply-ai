@@ -49,7 +49,7 @@
 
     .summary-card {
       background: white;
-      padding: 18px 12px;
+      padding: 16px 10px;
       border-radius: 12px;
       box-shadow: 0 2px 8px #0000000a;
       text-align: center;
@@ -67,6 +67,13 @@
       color: #64748b;
     }
 
+    .updated {
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+
     .toolbar {
       display: flex;
       gap: 10px;
@@ -75,40 +82,34 @@
     }
 
     input,
-    select,
-    button {
+    select {
       padding: 12px;
+      border: 1px solid #cbd5e1;
       border-radius: 8px;
-      border: 1px solid #d5dce8;
+      background: white;
       font-size: 14px;
     }
 
-    input,
-    select {
-      background: white;
+    #searchInput {
       flex: 1;
-      min-width: 140px;
+      min-width: 180px;
     }
 
-    button {
-      background: #2563eb;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
+    #locationFilter {
+      min-width: 150px;
     }
 
-    button:hover {
-      background: #1d4ed8;
+    .job-list {
+      display: grid;
+      gap: 14px;
     }
 
     .job-card {
       background: white;
-      border-radius: 12px;
       padding: 18px;
-      margin-bottom: 14px;
+      border-radius: 12px;
       box-shadow: 0 2px 8px #0000000a;
-      border: 1px solid #e5eaf2;
+      border-left: 4px solid #2563eb;
     }
 
     .job-header {
@@ -119,66 +120,66 @@
     }
 
     .job-title {
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 17px;
       margin: 0 0 8px;
+      color: #172033;
     }
 
     .company {
+      font-weight: bold;
       color: #475569;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
     .location {
       color: #64748b;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .score {
       background: #dcfce7;
       color: #166534;
-      font-weight: bold;
       padding: 8px 10px;
       border-radius: 8px;
+      font-weight: bold;
       white-space: nowrap;
+      font-size: 14px;
     }
 
     .skills {
       margin-top: 14px;
       font-size: 13px;
       color: #475569;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .job-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 16px;
+      margin-top: 15px;
     }
 
-    .apply-button {
+    .apply-button,
+    .details-button {
       display: inline-block;
-      background: #16a34a;
-      color: white;
-      text-decoration: none;
       padding: 11px 16px;
+      border: none;
       border-radius: 8px;
       font-size: 14px;
       font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    .apply-button:hover {
-      background: #15803d;
+    .apply-button {
+      background: #2563eb;
+      color: white;
     }
 
     .details-button {
       background: #e2e8f0;
-      color: #1e293b;
-    }
-
-    .details-button:hover {
-      background: #cbd5e1;
+      color: #172033;
     }
 
     .details {
@@ -188,36 +189,47 @@
       background: #f8fafc;
       border-radius: 8px;
       font-size: 13px;
-      line-height: 1.6;
-      color: #475569;
+      line-height: 1.7;
     }
 
     .details.show {
       display: block;
     }
 
-    .message {
-      text-align: center;
+    .empty {
       background: white;
-      padding: 28px 16px;
+      padding: 25px;
       border-radius: 12px;
+      text-align: center;
       color: #64748b;
     }
 
     footer {
       text-align: center;
+      padding: 22px 12px;
       color: #64748b;
       font-size: 12px;
-      padding: 24px 12px;
     }
 
     @media (max-width: 600px) {
-      .summary {
-        grid-template-columns: 1fr 1fr;
+      header h1 {
+        font-size: 22px;
       }
 
-      .summary-card:last-child {
-        grid-column: span 2;
+      .summary {
+        gap: 8px;
+      }
+
+      .summary-card {
+        padding: 14px 6px;
+      }
+
+      .summary-card h2 {
+        font-size: 22px;
+      }
+
+      .summary-card p {
+        font-size: 11px;
       }
 
       .job-header {
@@ -228,42 +240,49 @@
         align-self: flex-start;
       }
 
-      header h1 {
-        font-size: 22px;
+      #searchInput,
+      #locationFilter {
+        width: 100%;
       }
     }
   </style>
 </head>
 
 <body>
+
   <header>
     <h1>🎯 Job Match Dashboard</h1>
-    <p>Find QA & Manual Testing jobs that match your profile</p>
+    <p>Find QA & Playwright jobs matching your profile</p>
   </header>
 
   <main class="container">
+
     <section class="summary">
       <div class="summary-card">
         <h2 id="totalJobs">0</h2>
+        <p>Jobs Fetched</p>
+      </div>
+
+      <div class="summary-card">
+        <h2 id="matchedJobs">0</h2>
         <p>Matching Jobs</p>
       </div>
 
       <div class="summary-card">
-        <h2 id="bestScore">0%</h2>
-        <p>Best Match</p>
-      </div>
-
-      <div class="summary-card">
-        <h2 id="lastUpdated">--</h2>
-        <p>Last Updated</p>
+        <h2 id="topScore">0%</h2>
+        <p>Highest Match</p>
       </div>
     </section>
 
+    <div class="updated" id="lastUpdated">
+      Loading job data...
+    </div>
+
     <section class="toolbar">
       <input
-        type="text"
+        type="search"
         id="searchInput"
-        placeholder="Search job, company or skill..."
+        placeholder="Search job title or company..."
       >
 
       <select id="locationFilter">
@@ -272,33 +291,29 @@
         <option value="Bengaluru">Bengaluru</option>
         <option value="Hyderabad">Hyderabad</option>
       </select>
-
-      <button onclick="loadJobs()">Refresh Jobs</button>
     </section>
 
-    <section id="jobsContainer">
-      <div class="message">Loading matching jobs...</div>
+    <section id="jobList" class="job-list">
+      <div class="empty">Loading matching jobs...</div>
     </section>
+
   </main>
 
   <footer>
-    Job Match Dashboard | Apply manually through the job application link
+    Job Match Dashboard | Apply manually through the job links
   </footer>
 
   <script>
     let allJobs = [];
 
     async function loadJobs() {
-      const container = document.getElementById("jobsContainer");
-
-      container.innerHTML =
-        '<div class="message">Loading latest job matches...</div>';
+      const jobList = document.getElementById("jobList");
 
       try {
-        const response = await fetch("jobs.json?t=" + Date.now());
+        const response = await fetch("./jobs.json?t=" + Date.now());
 
         if (!response.ok) {
-          throw new Error("Unable to load jobs.json");
+          throw new Error("Could not load jobs.json");
         }
 
         const data = await response.json();
@@ -306,34 +321,42 @@
         allJobs = Array.isArray(data.jobs) ? data.jobs : [];
 
         document.getElementById("totalJobs").textContent =
+          data.totalJobsFetched || 0;
+
+        document.getElementById("matchedJobs").textContent =
           allJobs.length;
 
-        const bestScore = allJobs.length
+        const highestScore = allJobs.length
           ? Math.max(...allJobs.map(job => Number(job.matchScore) || 0))
           : 0;
 
-        document.getElementById("bestScore").textContent =
-          bestScore + "%";
+        document.getElementById("topScore").textContent =
+          highestScore + "%";
 
-        document.getElementById("lastUpdated").textContent =
-          data.generatedAt
-            ? new Date(data.generatedAt).toLocaleString()
-            : "--";
+        if (data.generatedAt) {
+          const date = new Date(data.generatedAt);
+
+          document.getElementById("lastUpdated").textContent =
+            "Last Updated: " + date.toLocaleString("en-IN");
+        } else {
+          document.getElementById("lastUpdated").textContent =
+            "Job data loaded";
+        }
 
         renderJobs();
+
       } catch (error) {
-        container.innerHTML = `
-          <div class="message">
-            <h3>Jobs are not available yet</h3>
-            <p>Please run the GitHub Job Agent workflow first.</p>
-            <p>Make sure jobs.json is present in the repository.</p>
+        jobList.innerHTML = `
+          <div class="empty">
+            Unable to load jobs.<br><br>
+            Please check that jobs.json exists and the dashboard
+            is opened through GitHub Pages.
           </div>
         `;
       }
     }
 
     function renderJobs() {
-      const container = document.getElementById("jobsContainer");
       const searchText = document
         .getElementById("searchInput")
         .value
@@ -342,48 +365,49 @@
 
       const selectedLocation = document
         .getElementById("locationFilter")
-        .value;
+        .value
+        .toLowerCase();
 
       const filteredJobs = allJobs.filter(job => {
-        const searchableText = [
-          job.title,
-          job.company,
-          job.location,
-          ...(job.matchedSkills || [])
-        ]
-          .join(" ")
-          .toLowerCase();
+        const title = String(job.title || "").toLowerCase();
+        const company = String(job.company || "").toLowerCase();
+        const location = String(job.location || "").toLowerCase();
 
-        const matchesSearch = searchableText.includes(searchText);
+        const matchesSearch =
+          title.includes(searchText) ||
+          company.includes(searchText);
 
         const matchesLocation =
           selectedLocation === "all" ||
-          (job.location || "")
-            .toLowerCase()
-            .includes(selectedLocation.toLowerCase());
+          location.includes(selectedLocation);
 
         return matchesSearch && matchesLocation;
       });
 
+      const jobList = document.getElementById("jobList");
+
       if (filteredJobs.length === 0) {
-        container.innerHTML = `
-          <div class="message">
-            <h3>No matching jobs found</h3>
-            <p>Try changing your search or location filter.</p>
+        jobList.innerHTML = `
+          <div class="empty">
+            No matching jobs found for this search.
           </div>
         `;
         return;
       }
 
-      container.innerHTML = filteredJobs.map((job, index) => {
-        const title = escapeHTML(job.title || "Job title not available");
-        const company = escapeHTML(job.company || "Company not available");
-        const location = escapeHTML(job.location || "Location not available");
+      jobList.innerHTML = filteredJobs.map((job, index) => {
+        const title = escapeHTML(job.title || "Job Title Not Available");
+        const company = escapeHTML(job.company || "Company Not Available");
+        const location = escapeHTML(job.location || "Location Not Available");
         const score = Number(job.matchScore) || 0;
 
-        const skills = (job.matchedSkills || [])
-          .map(skill => escapeHTML(skill))
-          .join(", ") || "No matched skills listed";
+        const skills = Array.isArray(job.matchedSkills)
+          ? job.matchedSkills.map(escapeHTML).join(", ")
+          : "Not available";
+
+        const reasons = Array.isArray(job.reasons)
+          ? job.reasons
+          : ["Meets matching criteria"];
 
         const applyLink = safeURL(job.applyLink);
 
@@ -392,10 +416,13 @@
                 href="${applyLink}"
                 target="_blank"
                 rel="noopener noreferrer">Apply Now ↗</a>`
-          : `<button disabled>No Apply Link</button>`;
+          : `<button class="details-button" disabled>
+                Apply Link Not Available
+             </button>`;
 
         return `
           <article class="job-card">
+
             <div class="job-header">
               <div>
                 <h2 class="job-title">${title}</h2>
@@ -412,20 +439,23 @@
 
             <div class="job-actions">
               ${applyButton}
-              <button class="details-button"
+
+              <button
+                class="details-button"
                 onclick="toggleDetails(${index})">
                 View Details
               </button>
             </div>
 
             <div class="details" id="details-${index}">
-              <strong>Match Reasons:</strong>
+              <strong>Match Reasons</strong>
               <ul>
-                ${(job.reasons || ["Meets matching criteria"])
-                  .map(reason => `<li>${escapeHTML(reason)}</li>`)
-                  .join("")}
+                ${reasons.map(reason =>
+                  `<li>${escapeHTML(reason)}</li>`
+                ).join("")}
               </ul>
             </div>
+
           </article>
         `;
       }).join("");
@@ -472,5 +502,6 @@
 
     loadJobs();
   </script>
+
 </body>
 </html>
