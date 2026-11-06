@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Job Match Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      color: #1f2937;
+    }
+
+    header {
+      background: linear-gradient(135deg, #172554, #2563eb);
+      color: white;
+      padding: 25px 16px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 25px;
+    }
+
+    header p {
+      margin: 0;
+      color: #dbeafe;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: -5px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0000000a;
+    }
+
+    .stat-card span {
+      display: block;
+      color: #64748b;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .stat-card strong {
+      font-size: 26px;
+      color: #1d4ed8;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    input,
+    select {
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: white;
+      font-size: 14px;
+      min-width: 0;
+    }
+
+    input {
+      flex: 1;
+      width: 100%;
+    }
+
+    select {
+      width: 100%;
+    }
+
+    .job-card {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px #0000000a;
+      border: 1px solid #e5e7eb;
+    }
+
+    .job-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 0 8px;
+      color: #111827;
+    }
+
+    .company {
+      color: #4b5563;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .job-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .tag {
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 6px 9px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .score {
+      color: #15803d;
+      background: #dcfce7;
+      font-weight: bold;
+    }
+
+    .skills {
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 12px 0;
+    }
+
+    .apply-button {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .apply-button:hover {
+      background: #1d4ed8;
+    }
+
+    .empty {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      color: #64748b;
+    }
+
+    .updated {
+      color: #64748b;
+      font-size: 12px;
+      margin: 18px 0;
+      text-align: center;
+    }
+
+    .error {
+      color: #b91c1c;
+      background: #fee2e2;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    @media (min-width: 600px) {
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      select {
+        width: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>My Job Match Dashboard</h1>
+    <p>Manual QA • Functional Testing • Playwright</p>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="stat-card">
+        <span>Total Matching Jobs</span>
+        <strong id="totalJobs">0</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>Best Match Score</span>
+        <strong id="bestScore">0%</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>Last Updated</span>
+        <strong id="lastUpdated" style="font-size:15px;">Loading...</strong>
+      </div>
+    </section>
+
+    <section class="filters">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search job title or company..."
+      />
+
+      <select id="locationFilter">
+        <option value="">All Locations</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Bengaluru">Bengaluru</option>
+        <option value="Hyderabad">Hyderabad</option>
+      </select>
+
+      <select id="scoreFilter">
+        <option value="60">60%+ Match</option>
+        <option value="70">70%+ Match</option>
+        <option value="80">80%+ Match</option>
+        <option value="90">90%+ Match</option>
+      </select>
+    </section>
+
+    <div id="message"></div>
+    <section id="jobsList"></section>
+
+    <p class="updated">
+      Job data is updated when the GitHub Job Agent workflow runs.
+    </p>
+  </main>
+
+  <script>
+    let allJobs = [];
+
+    async function loadJobs() {
+      const message = document.getElementById("message");
+      const jobsList = document.getElementById("jobsList");
+
+      try {
+        const response = await fetch("./jobs.json?updated=" + Date.now());
+
+        if (!response.ok) {
+          throw new Error("Could not load jobs.json");
+        }
+
+        const data = await response.json();
+
+        allJobs = Array.isArray(data.jobs) ? data.jobs : [];
+
+        document.getElementById("totalJobs").textContent =
+          data.matchingJobs ?? allJobs.length;
+
+        const bestScore = allJobs.length
+          ? Math.max(...allJobs.map(job => Number(job.matchScore) || 0))
+          : 0;
+
+        document.getElementById("bestScore").textContent =
+          bestScore + "%";
+
+        document.getElementById("lastUpdated").textContent =
+          data.generatedAt
+            ? new Date(data.generatedAt).toLocaleString()
+            : "Not available";
+
+        message.innerHTML = "";
+        renderJobs();
+
+      } catch (error) {
+        message.innerHTML = `
+          <div class="error">
+            Jobs data is not available yet.
+            Please check whether jobs.json exists in the repository.
+          </div>
+        `;
+
+        jobsList.innerHTML = "";
+      }
+    }
+
+    function renderJobs() {
+      const searchText = document
+        .getElementById("searchInput")
+        .value.toLowerCase()
+        .trim();
+
+      const location = document
+        .getElementById("locationFilter")
+        .value.toLowerCase();
+
+      const minimumScore = Number(
+        document.getElementById("scoreFilter").value
+      );
+
+      const filteredJobs = allJobs
+        .filter(job => {
+          const title = (job.title || "").toLowerCase();
+          const company = (job.company || "").toLowerCase();
+          const jobLocation = (job.location || "").toLowerCase();
+
+          const matchesSearch =
+            title.includes(searchText) ||
+            company.includes(searchText);
+
+          const matchesLocation =
+            !location || jobLocation.includes(location);
+
+          const matchesScore =
+            Number(job.matchScore) >= minimumScore;
+
+          return matchesSearch && matchesLocation && matchesScore;
+        })
+        .sort((a, b) => Number(b.matchScore) - Number(a.matchScore));
+
+      const jobsList = document.getElementById("jobsList");
+
+      if (filteredJobs.length === 0) {
+        jobsList.innerHTML = `
+          <div class="empty">
+            No matching jobs found for these filters.
+          </div>
+        `;
+        return;
+      }
+
+      jobsList.innerHTML = filteredJobs.map(job => {
+        const title = escapeHTML(job.title || "Job title unavailable");
+        const company = escapeHTML(job.company || "Company unavailable");
+        const locationText = escapeHTML(job.location || "Location unavailable");
+        const score = Number(job.matchScore) || 0;
+
+        const skills = Array.isArray(job.matchedSkills)
+          ? job.matchedSkills.join(", ")
+          : "";
+
+        const applyLink = safeURL(job.applyLink);
+
+        return `
+          <article class="job-card">
+            <h2 class="job-title">${title}</h2>
+
+            <div class="company">
+              ${company} • ${locationText}
+            </div>
+
+            <div class="job-details">
+              <span class="tag score">${score}% Match</span>
+              <span class="tag">QA / Testing</span>
+            </div>
+
+            <div class="skills">
+              <strong>Matched Skills:</strong>
+              ${escapeHTML(skills || "Not specified")}
+            </div>
+
+            ${
+              applyLink
+                ? `<a
+                    class="apply-button"
+                    href="${applyLink}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >View Job & Apply ↗</a>`
+                : `<span class="tag">Apply link unavailable</span>`
+            }
+          </article>
+        `;
+      }).join("");
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, character => {
+        const map = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        };
+
+        return map[character];
+      });
+    }
+
+    function safeURL(value) {
+      try {
+        const url = new URL(value);
+
+        if (url.protocol === "https:" || url.protocol === "http:") {
+          return escapeHTML(url.href);
+        }
+      } catch (error) {
+        return "";
+      }
+
+      return "";
+    }
+
+    document
+      .getElementById("searchInput")
+      .addEventListener("input", renderJobs);
+
+    document
+      .getElementById("locationFilter")
+      .addEventListener("change", renderJobs);
+
+    document
+      .getElementById("scoreFilter")
+      .addEventListener("change", renderJobs);
+
+    loadJobs();
+  </script>
+</body>
+</html>
