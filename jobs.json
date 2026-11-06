@@ -1,0 +1,155 @@
+{
+  "generatedAt": "2026-11-06T17:10:10.578Z",
+  "totalJobsFetched": 23,
+  "matchingJobs": 7,
+  "jobs": [
+    {
+      "title": "QA Engineer (Manual + Automation Testing)",
+      "company": "Pricube Technologies",
+      "location": "Chennai, Tamil Nadu",
+      "matchScore": 77,
+      "matchedSkills": [
+        "manual testing",
+        "playwright",
+        "test case",
+        "api testing"
+      ],
+      "applyLink": "https://www.iitjobs.com/job/qa-engineer-manual-automation-testing-chennai-tamil-nadu-india-643569",
+      "cityPriority": 0,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "QA Engineer (WFO) - Chennai",
+      "company": "India Health Link Pvt Ltd",
+      "location": "Chennai, Tamil Nadu",
+      "matchScore": 74,
+      "matchedSkills": [
+        "playwright",
+        "typescript",
+        "api testing"
+      ],
+      "applyLink": "https://www.simplyhired.co.in/job/fpJXXrG_i_ZESahDzn659FDoBa_sZBFYJc_jslBdtBy3XeKpsE2hfw",
+      "cityPriority": 0,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "MDG QA TESTER / QA AUTOMATION ENGINEER",
+      "company": "GreatHR Solutions",
+      "location": "Chennai, Tamil Nadu",
+      "matchScore": 74,
+      "matchedSkills": [
+        "manual testing",
+        "test case",
+        "api testing"
+      ],
+      "applyLink": "https://in.linkedin.com/jobs/view/mdg-qa-tester-qa-automation-engineer-at-greathr-solutions-4486342716",
+      "cityPriority": 0,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "QA Engineer – SharePoint, Power Apps & AI",
+      "company": "Photon",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 85,
+      "matchedSkills": [
+        "manual testing",
+        "regression testing",
+        "playwright",
+        "test case",
+        "test scenarios",
+        "defect management",
+        "api testing"
+      ],
+      "applyLink": "https://in.linkedin.com/jobs/view/qa-engineer-%E2%80%93-sharepoint-power-apps-ai-at-photon-4486381389",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "QA Engineer | Shopify POS / Strong POS (Bengaluru)",
+      "company": "LanceSoft",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 83,
+      "matchedSkills": [
+        "regression testing",
+        "playwright",
+        "javascript",
+        "test case",
+        "test scenarios",
+        "api testing"
+      ],
+      "applyLink": "https://in.jobrapido.com/jobpreview/7112399528954691584",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Manual Tester - Mobile Application & Loyalty Domain",
+      "company": "Arohana Tech Solutions Private Limited",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 74,
+      "matchedSkills": [
+        "manual testing",
+        "test case",
+        "test scenarios"
+      ],
+      "applyLink": "https://in.jooble.org/jdp/-2707753883614945769",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Manual Tester - Mobile Application & Loyalty Domain",
+      "company": "Arohana Tech Solutions Private Limited",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 74,
+      "matchedSkills": [
+        "manual testing",
+        "test case",
+        "test scenarios"
+      ],
+      "applyLink": "https://in.jooble.org/jdp/-2707753883614945769",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    }
+  ]
+}
