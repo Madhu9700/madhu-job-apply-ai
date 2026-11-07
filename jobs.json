@@ -1,20 +1,21 @@
 {
-  "generatedAt": "2026-11-06T17:10:10.578Z",
-  "totalJobsFetched": 23,
-  "matchingJobs": 7,
+  "generatedAt": "2026-11-07T10:30:26.126Z",
+  "totalJobsFetched": 29,
+  "matchingJobs": 6,
   "jobs": [
     {
-      "title": "QA Engineer (Manual + Automation Testing)",
-      "company": "Pricube Technologies",
+      "title": "Lead II - Software Testing- Facets + Playwright Automation",
+      "company": "UST",
       "location": "Chennai, Tamil Nadu",
-      "matchScore": 77,
+      "matchScore": 80,
       "matchedSkills": [
-        "manual testing",
+        "functional testing",
         "playwright",
-        "test case",
+        "test scenarios",
+        "defect management",
         "api testing"
       ],
-      "applyLink": "https://www.iitjobs.com/job/qa-engineer-manual-automation-testing-chennai-tamil-nadu-india-643569",
+      "applyLink": "https://www.glassdoor.co.in/job-listing/jv?jl=1010319656599",
       "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
@@ -25,27 +26,7 @@
       ]
     },
     {
-      "title": "QA Engineer (WFO) - Chennai",
-      "company": "India Health Link Pvt Ltd",
-      "location": "Chennai, Tamil Nadu",
-      "matchScore": 74,
-      "matchedSkills": [
-        "playwright",
-        "typescript",
-        "api testing"
-      ],
-      "applyLink": "https://www.simplyhired.co.in/job/fpJXXrG_i_ZESahDzn659FDoBa_sZBFYJc_jslBdtBy3XeKpsE2hfw",
-      "cityPriority": 0,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "MDG QA TESTER / QA AUTOMATION ENGINEER",
+      "title": "MDG QA TESTER / QA AUTOMATION ENGINEER (Chennai)",
       "company": "GreatHR Solutions",
       "location": "Chennai, Tamil Nadu",
       "matchScore": 74,
@@ -54,7 +35,7 @@
         "test case",
         "api testing"
       ],
-      "applyLink": "https://in.linkedin.com/jobs/view/mdg-qa-tester-qa-automation-engineer-at-greathr-solutions-4486342716",
+      "applyLink": "https://in.jobrapido.com/jobpreview/2477403039384731648",
       "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
@@ -89,19 +70,18 @@
       ]
     },
     {
-      "title": "QA Engineer | Shopify POS / Strong POS (Bengaluru)",
-      "company": "LanceSoft",
+      "title": "Architect I - Software Testing- Facets + Playwright Automation",
+      "company": "UST",
       "location": "Bengaluru, Karnataka",
-      "matchScore": 83,
+      "matchScore": 80,
       "matchedSkills": [
-        "regression testing",
+        "manual testing",
         "playwright",
         "javascript",
-        "test case",
-        "test scenarios",
+        "typescript",
         "api testing"
       ],
-      "applyLink": "https://in.jobrapido.com/jobpreview/7112399528954691584",
+      "applyLink": "https://bebee.com/in/jobs/architect-i-software-testing-facets-playwright-automation-ust-bengaluru--fj-2454047537",
       "cityPriority": 1,
       "roleMatch": true,
       "locationMatch": true,
@@ -112,8 +92,8 @@
       ]
     },
     {
-      "title": "Manual Tester - Mobile Application & Loyalty Domain",
-      "company": "Arohana Tech Solutions Private Limited",
+      "title": "Network QA Engineer – L2/L3 Testing",
+      "company": "TekIT Software Solutions Pvt. Ltd. (India & USA)",
       "location": "Bengaluru, Karnataka",
       "matchScore": 74,
       "matchedSkills": [
@@ -121,7 +101,7 @@
         "test case",
         "test scenarios"
       ],
-      "applyLink": "https://in.jooble.org/jdp/-2707753883614945769",
+      "applyLink": "https://in.linkedin.com/jobs/view/network-qa-engineer-%E2%80%93-l2-l3-testing-at-tekit-software-solutions-pvt-ltd-india-usa-4487712523",
       "cityPriority": 1,
       "roleMatch": true,
       "locationMatch": true,
@@ -132,8 +112,8 @@
       ]
     },
     {
-      "title": "Manual Tester - Mobile Application & Loyalty Domain",
-      "company": "Arohana Tech Solutions Private Limited",
+      "title": "Network QA Engineer – L2/L3 Testing",
+      "company": "TekIT Software Solutions Pvt. Ltd. (India & USA)",
       "location": "Bengaluru, Karnataka",
       "matchScore": 74,
       "matchedSkills": [
@@ -141,7 +121,7 @@
         "test case",
         "test scenarios"
       ],
-      "applyLink": "https://in.jooble.org/jdp/-2707753883614945769",
+      "applyLink": "https://in.linkedin.com/jobs/view/network-qa-engineer-%E2%80%93-l2-l3-testing-at-tekit-software-solutions-pvt-ltd-india-usa-4487712523",
       "cityPriority": 1,
       "roleMatch": true,
       "locationMatch": true,
