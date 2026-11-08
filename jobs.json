@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-07T10:30:26.126Z",
+  "generatedAt": "2026-11-08T10:38:08.894Z",
   "totalJobsFetched": 29,
-  "matchingJobs": 6,
+  "matchingJobs": 7,
   "jobs": [
     {
       "title": "Lead II - Software Testing- Facets + Playwright Automation",
@@ -26,16 +26,14 @@
       ]
     },
     {
-      "title": "MDG QA TESTER / QA AUTOMATION ENGINEER (Chennai)",
-      "company": "GreatHR Solutions",
+      "title": "Qa Automation Engineers India Chennai",
+      "company": "Photon",
       "location": "Chennai, Tamil Nadu",
-      "matchScore": 74,
+      "matchScore": 68,
       "matchedSkills": [
-        "manual testing",
-        "test case",
-        "api testing"
+        "test case"
       ],
-      "applyLink": "https://in.jobrapido.com/jobpreview/2477403039384731648",
+      "applyLink": "https://www.shine.com/jobs/qa-automation-engineers-india-chennai/photon/20026760",
       "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
@@ -46,83 +44,91 @@
       ]
     },
     {
-      "title": "QA Engineer – SharePoint, Power Apps & AI",
+      "title": "Qa Automation Engineers India Chennai",
       "company": "Photon",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 85,
+      "location": "Chennai, Tamil Nadu",
+      "matchScore": 68,
       "matchedSkills": [
-        "manual testing",
+        "test case"
+      ],
+      "applyLink": "https://www.shine.com/jobs/qa-automation-engineers-india-chennai/photon/20026760",
+      "cityPriority": 0,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Java QA Engineer",
+      "company": "Alphacom Systems and Solutions Pvt Ltd",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 71,
+      "matchedSkills": [
         "regression testing",
-        "playwright",
+        "test case"
+      ],
+      "applyLink": "https://www.shine.com/jobs/java-qa-engineer/alphacom-systems-and-solutions-pvt-ltd/20028676",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Mainframe Functional Test Engineer – Banking",
+      "company": "RMV Workforce Corporation",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 68,
+      "matchedSkills": [
+        "functional testing"
+      ],
+      "applyLink": "https://bebee.com/in/jobs/mainframe-functional-test-engineer-banking-rmv-workforce-corporation-bangalore-urban-district--t7xk-924230297",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Erp Senior Specialist Manual Tester For Manufacturing & Engineering Hyderabad",
+      "company": "NTT DATA Global Delivery Services",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 77,
+      "matchedSkills": [
+        "functional testing",
+        "regression testing",
         "test case",
-        "test scenarios",
-        "defect management",
+        "defect management"
+      ],
+      "applyLink": "https://www.kitjob.in/job/350963963/erp-senior-specialist-manual-tester-for-manufacturing-engineering-hyderabad",
+      "cityPriority": 2,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Test Engineer – D&A",
+      "company": "CGI",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 68,
+      "matchedSkills": [
         "api testing"
       ],
-      "applyLink": "https://in.linkedin.com/jobs/view/qa-engineer-%E2%80%93-sharepoint-power-apps-ai-at-photon-4486381389",
-      "cityPriority": 1,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Architect I - Software Testing- Facets + Playwright Automation",
-      "company": "UST",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 80,
-      "matchedSkills": [
-        "manual testing",
-        "playwright",
-        "javascript",
-        "typescript",
-        "api testing"
-      ],
-      "applyLink": "https://bebee.com/in/jobs/architect-i-software-testing-facets-playwright-automation-ust-bengaluru--fj-2454047537",
-      "cityPriority": 1,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Network QA Engineer – L2/L3 Testing",
-      "company": "TekIT Software Solutions Pvt. Ltd. (India & USA)",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 74,
-      "matchedSkills": [
-        "manual testing",
-        "test case",
-        "test scenarios"
-      ],
-      "applyLink": "https://in.linkedin.com/jobs/view/network-qa-engineer-%E2%80%93-l2-l3-testing-at-tekit-software-solutions-pvt-ltd-india-usa-4487712523",
-      "cityPriority": 1,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Network QA Engineer – L2/L3 Testing",
-      "company": "TekIT Software Solutions Pvt. Ltd. (India & USA)",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 74,
-      "matchedSkills": [
-        "manual testing",
-        "test case",
-        "test scenarios"
-      ],
-      "applyLink": "https://in.linkedin.com/jobs/view/network-qa-engineer-%E2%80%93-l2-l3-testing-at-tekit-software-solutions-pvt-ltd-india-usa-4487712523",
-      "cityPriority": 1,
+      "applyLink": "https://www.simplyhired.co.in/job/YjdeQJyXwVx3OG_0Ay3vjy_d_L2nOqlMOgLsK3t0_wUzcEyfAIbIFw",
+      "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
