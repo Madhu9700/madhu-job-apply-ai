@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-08T10:38:08.894Z",
-  "totalJobsFetched": 29,
-  "matchingJobs": 7,
+  "generatedAt": "2026-11-09T11:53:31.412Z",
+  "totalJobsFetched": 15,
+  "matchingJobs": 4,
   "jobs": [
     {
-      "title": "Lead II - Software Testing- Facets + Playwright Automation",
+      "title": "Architect I - Software Testing- Facets + Playwright Automation (Chennai)",
       "company": "UST",
       "location": "Chennai, Tamil Nadu",
       "matchScore": 80,
       "matchedSkills": [
-        "functional testing",
+        "manual testing",
         "playwright",
-        "test scenarios",
-        "defect management",
+        "javascript",
+        "typescript",
         "api testing"
       ],
-      "applyLink": "https://www.glassdoor.co.in/job-listing/jv?jl=1010319656599",
+      "applyLink": "https://in.jobrapido.com/jobpreview/2262525585047683072",
       "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
@@ -26,52 +26,13 @@
       ]
     },
     {
-      "title": "Qa Automation Engineers India Chennai",
-      "company": "Photon",
+      "title": "Senior Test Engineer (Chennai)",
+      "company": "Maveric Systems",
       "location": "Chennai, Tamil Nadu",
-      "matchScore": 68,
-      "matchedSkills": [
-        "test case"
-      ],
-      "applyLink": "https://www.shine.com/jobs/qa-automation-engineers-india-chennai/photon/20026760",
+      "matchScore": 65,
+      "matchedSkills": [],
+      "applyLink": "https://in.jobrapido.com/jobpreview/3784545996273352704",
       "cityPriority": 0,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Qa Automation Engineers India Chennai",
-      "company": "Photon",
-      "location": "Chennai, Tamil Nadu",
-      "matchScore": 68,
-      "matchedSkills": [
-        "test case"
-      ],
-      "applyLink": "https://www.shine.com/jobs/qa-automation-engineers-india-chennai/photon/20026760",
-      "cityPriority": 0,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Java QA Engineer",
-      "company": "Alphacom Systems and Solutions Pvt Ltd",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 71,
-      "matchedSkills": [
-        "regression testing",
-        "test case"
-      ],
-      "applyLink": "https://www.shine.com/jobs/java-qa-engineer/alphacom-systems-and-solutions-pvt-ltd/20028676",
-      "cityPriority": 1,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
@@ -90,27 +51,6 @@
       ],
       "applyLink": "https://bebee.com/in/jobs/mainframe-functional-test-engineer-banking-rmv-workforce-corporation-bangalore-urban-district--t7xk-924230297",
       "cityPriority": 1,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Erp Senior Specialist Manual Tester For Manufacturing & Engineering Hyderabad",
-      "company": "NTT DATA Global Delivery Services",
-      "location": "Hyderabad, Telangana",
-      "matchScore": 77,
-      "matchedSkills": [
-        "functional testing",
-        "regression testing",
-        "test case",
-        "defect management"
-      ],
-      "applyLink": "https://www.kitjob.in/job/350963963/erp-senior-specialist-manual-tester-for-manufacturing-engineering-hyderabad",
-      "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
