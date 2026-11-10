@@ -1,8 +1,30 @@
 {
-  "generatedAt": "2026-11-09T11:53:31.412Z",
-  "totalJobsFetched": 15,
-  "matchingJobs": 4,
+  "generatedAt": "2026-11-10T11:27:35.794Z",
+  "totalJobsFetched": 29,
+  "matchingJobs": 6,
   "jobs": [
+    {
+      "title": "QA Manual Test Engineer",
+      "company": "NielsenIQ",
+      "location": "Chennai, Tamil Nadu  (+1 other)",
+      "matchScore": 80,
+      "matchedSkills": [
+        "manual testing",
+        "regression testing",
+        "smoke testing",
+        "playwright",
+        "test case"
+      ],
+      "applyLink": "https://in.talent.com/view?id=622237079190838276",
+      "cityPriority": 0,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
     {
       "title": "Architect I - Software Testing- Facets + Playwright Automation (Chennai)",
       "company": "UST",
@@ -42,14 +64,17 @@
       ]
     },
     {
-      "title": "Mainframe Functional Test Engineer – Banking",
-      "company": "RMV Workforce Corporation",
+      "title": "Trendlyne - Senior QA Engineer - Automation Testing",
+      "company": "Giskard Datatech",
       "location": "Bengaluru, Karnataka",
-      "matchScore": 68,
+      "matchScore": 77,
       "matchedSkills": [
-        "functional testing"
+        "playwright",
+        "javascript",
+        "test case",
+        "api testing"
       ],
-      "applyLink": "https://bebee.com/in/jobs/mainframe-functional-test-engineer-banking-rmv-workforce-corporation-bangalore-urban-district--t7xk-924230297",
+      "applyLink": "https://www.hirist.tech/j/trendlyne-senior-qa-engineer-automation-testing-1677867",
       "cityPriority": 1,
       "roleMatch": true,
       "locationMatch": true,
@@ -60,14 +85,36 @@
       ]
     },
     {
-      "title": "Test Engineer – D&A",
-      "company": "CGI",
-      "location": "Hyderabad, Telangana",
-      "matchScore": 68,
+      "title": "Trendlyne - Senior QA Engineer - Automation Testing",
+      "company": "Giskard Datatech",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 77,
       "matchedSkills": [
+        "playwright",
+        "javascript",
+        "test case",
         "api testing"
       ],
-      "applyLink": "https://www.simplyhired.co.in/job/YjdeQJyXwVx3OG_0Ay3vjy_d_L2nOqlMOgLsK3t0_wUzcEyfAIbIFw",
+      "applyLink": "https://www.hirist.tech/j/trendlyne-senior-qa-engineer-automation-testing-1677867",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Enterprise Software Test Engineer",
+      "company": "India Medtronic Pvt. Ltd",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 71,
+      "matchedSkills": [
+        "regression testing",
+        "test case"
+      ],
+      "applyLink": "https://apna.co/job/hyderabad/enterprise-software-test-engineer-ii-1693504171",
       "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
