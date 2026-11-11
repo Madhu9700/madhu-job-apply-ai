@@ -1,59 +1,17 @@
 {
-  "generatedAt": "2026-11-10T11:27:35.794Z",
-  "totalJobsFetched": 29,
-  "matchingJobs": 6,
+  "generatedAt": "2026-11-11T11:17:06.791Z",
+  "totalJobsFetched": 24,
+  "matchingJobs": 5,
   "jobs": [
     {
-      "title": "QA Manual Test Engineer",
-      "company": "NielsenIQ",
-      "location": "Chennai, Tamil Nadu  (+1 other)",
-      "matchScore": 80,
-      "matchedSkills": [
-        "manual testing",
-        "regression testing",
-        "smoke testing",
-        "playwright",
-        "test case"
-      ],
-      "applyLink": "https://in.talent.com/view?id=622237079190838276",
-      "cityPriority": 0,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Architect I - Software Testing- Facets + Playwright Automation (Chennai)",
-      "company": "UST",
+      "title": "SAP Automation Test Engineer - UFT",
+      "company": "Aparajita Consultancy services",
       "location": "Chennai, Tamil Nadu",
-      "matchScore": 80,
+      "matchScore": 68,
       "matchedSkills": [
-        "manual testing",
-        "playwright",
-        "javascript",
-        "typescript",
         "api testing"
       ],
-      "applyLink": "https://in.jobrapido.com/jobpreview/2262525585047683072",
-      "cityPriority": 0,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Senior Test Engineer (Chennai)",
-      "company": "Maveric Systems",
-      "location": "Chennai, Tamil Nadu",
-      "matchScore": 65,
-      "matchedSkills": [],
-      "applyLink": "https://in.jobrapido.com/jobpreview/3784545996273352704",
+      "applyLink": "https://in.jooble.org/jdp/1268110870095345018",
       "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
@@ -106,15 +64,32 @@
       ]
     },
     {
-      "title": "Enterprise Software Test Engineer",
-      "company": "India Medtronic Pvt. Ltd",
+      "title": "SAP Automation Test Engineer - UFT",
+      "company": "Aparajita Consultancy services",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 68,
+      "matchedSkills": [
+        "api testing"
+      ],
+      "applyLink": "https://in.jooble.org/jdp/-1436750649729022410",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Sr Quality Assurance",
+      "company": "Syniverse",
       "location": "Hyderabad, Telangana",
-      "matchScore": 71,
+      "matchScore": 68,
       "matchedSkills": [
-        "regression testing",
         "test case"
       ],
-      "applyLink": "https://apna.co/job/hyderabad/enterprise-software-test-engineer-ii-1693504171",
+      "applyLink": "https://in.linkedin.com/jobs/view/sr-quality-assurance-at-syniverse-4487476362",
       "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
