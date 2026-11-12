@@ -1,17 +1,21 @@
 {
-  "generatedAt": "2026-11-11T11:17:06.791Z",
-  "totalJobsFetched": 24,
-  "matchingJobs": 5,
+  "generatedAt": "2026-11-12T11:33:42.180Z",
+  "totalJobsFetched": 31,
+  "matchingJobs": 11,
   "jobs": [
     {
-      "title": "SAP Automation Test Engineer - UFT",
-      "company": "Aparajita Consultancy services",
+      "title": "QA Manual Test Engineer",
+      "company": "NielsenIQ",
       "location": "Chennai, Tamil Nadu",
-      "matchScore": 68,
+      "matchScore": 80,
       "matchedSkills": [
-        "api testing"
+        "manual testing",
+        "regression testing",
+        "smoke testing",
+        "playwright",
+        "test case"
       ],
-      "applyLink": "https://in.jooble.org/jdp/1268110870095345018",
+      "applyLink": "https://in.jooble.org/jdp/5288947935929264860",
       "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
@@ -43,6 +47,27 @@
       ]
     },
     {
+      "title": "Senior QA Automation Engineer - Selenium, Playwright, Java",
+      "company": "MEEDEN LABS PRIVATE LIMITED",
+      "location": "Bengaluru, Karnataka   (+3 others)",
+      "matchScore": 77,
+      "matchedSkills": [
+        "playwright",
+        "javascript",
+        "typescript",
+        "api testing"
+      ],
+      "applyLink": "https://www.shine.com/jobs/senior-qa-automation-engineer-selenium-playwright-java/meeden-labs-private-limited/20047561",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
       "title": "Trendlyne - Senior QA Engineer - Automation Testing",
       "company": "Giskard Datatech",
       "location": "Bengaluru, Karnataka",
@@ -54,6 +79,66 @@
         "api testing"
       ],
       "applyLink": "https://www.hirist.tech/j/trendlyne-senior-qa-engineer-automation-testing-1677867",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Manual Tester ( API and Database Testing)",
+      "company": "Intellicredence",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 77,
+      "matchedSkills": [
+        "manual testing",
+        "test case",
+        "test scenarios",
+        "api testing"
+      ],
+      "applyLink": "https://upnxtwork.in/jobs/manual-tester-api-and-database-testing-at-intellicredence-b717c985-7758-4186-a17a-0bf74e6f19e4",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Senior QA Automation Engineer - Selenium, Playwright, Java",
+      "company": "MEEDEN LABS PRIVATE LIMITED",
+      "location": "Bengaluru, Karnataka   (+3 others)",
+      "matchScore": 77,
+      "matchedSkills": [
+        "playwright",
+        "javascript",
+        "typescript",
+        "api testing"
+      ],
+      "applyLink": "https://www.shine.com/jobs/senior-qa-automation-engineer-selenium-playwright-java/meeden-labs-private-limited/20047561",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "SAP Automation Test Engineer - UFT",
+      "company": "Aparajita Consultancy services",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 68,
+      "matchedSkills": [
+        "api testing"
+      ],
+      "applyLink": "https://in.jooble.org/jdp/-1436750649729022410",
       "cityPriority": 1,
       "roleMatch": true,
       "locationMatch": true,
@@ -90,6 +175,38 @@
         "test case"
       ],
       "applyLink": "https://in.linkedin.com/jobs/view/sr-quality-assurance-at-syniverse-4487476362",
+      "cityPriority": 2,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "QA Engineer – DevOps Support Project | Hyderabad",
+      "company": "KT2i & Aktionable AI.",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 65,
+      "matchedSkills": [],
+      "applyLink": "https://in.linkedin.com/jobs/view/qa-engineer-%E2%80%93-devops-support-project-hyderabad-at-kt2i-aktionable-ai-4487895381",
+      "cityPriority": 2,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Quality Assurance Lead - Quality Leader, Data Annotation, MAP Annotation",
+      "company": "SELECTIONS HR SERVICES PRIVATE LIMITED",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 65,
+      "matchedSkills": [],
+      "applyLink": "https://www.shine.com/jobs/quality-assurance-lead-quality-leader-data-annotation-map-annotation/selections-hr-services-private-limited/20061942",
       "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
