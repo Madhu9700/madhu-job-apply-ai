@@ -1,21 +1,15 @@
 {
-  "generatedAt": "2026-11-12T11:33:42.180Z",
-  "totalJobsFetched": 31,
-  "matchingJobs": 11,
+  "generatedAt": "2026-11-13T11:17:19.779Z",
+  "totalJobsFetched": 39,
+  "matchingJobs": 13,
   "jobs": [
     {
-      "title": "QA Manual Test Engineer",
-      "company": "NielsenIQ",
+      "title": "Senior Test Engineer (Chennai)",
+      "company": "Maveric Systems",
       "location": "Chennai, Tamil Nadu",
-      "matchScore": 80,
-      "matchedSkills": [
-        "manual testing",
-        "regression testing",
-        "smoke testing",
-        "playwright",
-        "test case"
-      ],
-      "applyLink": "https://in.jooble.org/jdp/5288947935929264860",
+      "matchScore": 65,
+      "matchedSkills": [],
+      "applyLink": "https://www.shine.com/jobs/senior-test-engineer-chennai/maveric-systems/20053552",
       "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
@@ -26,18 +20,13 @@
       ]
     },
     {
-      "title": "Trendlyne - Senior QA Engineer - Automation Testing",
-      "company": "Giskard Datatech",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 77,
-      "matchedSkills": [
-        "playwright",
-        "javascript",
-        "test case",
-        "api testing"
-      ],
-      "applyLink": "https://www.hirist.tech/j/trendlyne-senior-qa-engineer-automation-testing-1677867",
-      "cityPriority": 1,
+      "title": "Senior Test Engineer (Chennai)",
+      "company": "Maveric Systems",
+      "location": "Chennai, Tamil Nadu",
+      "matchScore": 65,
+      "matchedSkills": [],
+      "applyLink": "https://www.shine.com/jobs/senior-test-engineer-chennai/maveric-systems/20053552",
+      "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
@@ -47,39 +36,13 @@
       ]
     },
     {
-      "title": "Senior QA Automation Engineer - Selenium, Playwright, Java",
-      "company": "MEEDEN LABS PRIVATE LIMITED",
-      "location": "Bengaluru, Karnataka   (+3 others)",
-      "matchScore": 77,
-      "matchedSkills": [
-        "playwright",
-        "javascript",
-        "typescript",
-        "api testing"
-      ],
-      "applyLink": "https://www.shine.com/jobs/senior-qa-automation-engineer-selenium-playwright-java/meeden-labs-private-limited/20047561",
-      "cityPriority": 1,
-      "roleMatch": true,
-      "locationMatch": true,
-      "experienceMatch": true,
-      "qualifies": true,
-      "reasons": [
-        "Meets current matching criteria"
-      ]
-    },
-    {
-      "title": "Trendlyne - Senior QA Engineer - Automation Testing",
-      "company": "Giskard Datatech",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 77,
-      "matchedSkills": [
-        "playwright",
-        "javascript",
-        "test case",
-        "api testing"
-      ],
-      "applyLink": "https://www.hirist.tech/j/trendlyne-senior-qa-engineer-automation-testing-1677867",
-      "cityPriority": 1,
+      "title": "Senior Test Engineer (Chennai)",
+      "company": "Maveric Systems",
+      "location": "Chennai, Tamil Nadu",
+      "matchScore": 65,
+      "matchedSkills": [],
+      "applyLink": "https://www.shine.com/jobs/senior-test-engineer-chennai/maveric-systems/20053552",
+      "cityPriority": 0,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
@@ -110,18 +73,75 @@
       ]
     },
     {
-      "title": "Senior QA Automation Engineer - Selenium, Playwright, Java",
-      "company": "MEEDEN LABS PRIVATE LIMITED",
-      "location": "Bengaluru, Karnataka   (+3 others)",
-      "matchScore": 77,
+      "title": "QA Engineer   AI Analytics / Databricks Genie",
+      "company": "PRI INDIA IT SERVICES PRIVATE LIMITED",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 71,
       "matchedSkills": [
+        "test case",
+        "api testing"
+      ],
+      "applyLink": "https://in.linkedin.com/jobs/view/qa-engineer-%EF%BF%BD-ai-analytics-databricks-genie-at-pri-india-it-services-private-limited-4489910447?refId=QF%2BYmbXeuggWgdBpXxXewA%3D%3D&trackingId=jGuPjsHKYiPQIuglEbxmqQ%3D%3D",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "Data Test Engineer(SQL / Python for test automation /Data warehouse /ETL testing/Databricks /Azure DevOps Test Plans) AM",
+      "company": "WNS",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 68,
+      "matchedSkills": [
+        "test case"
+      ],
+      "applyLink": "https://in.linkedin.com/jobs/view/data-test-engineer-sql-python-for-test-automation-data-warehouse-etl-testing-databricks-azure-devops-test-plans-am-at-wns-4489469268",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "SAP Automation Test Engineer - UFT",
+      "company": "Aparajita Consultancy services",
+      "location": "Bengaluru, Karnataka",
+      "matchScore": 68,
+      "matchedSkills": [
+        "api testing"
+      ],
+      "applyLink": "https://in.jooble.org/jdp/-1436750649729022410",
+      "cityPriority": 1,
+      "roleMatch": true,
+      "locationMatch": true,
+      "experienceMatch": true,
+      "qualifies": true,
+      "reasons": [
+        "Meets current matching criteria"
+      ]
+    },
+    {
+      "title": "QA Engineer - QA Testing, Manual Testing, Integration Testing",
+      "company": "INTELLICS GLOBAL SERVICES PRIVATE LIMITED",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 83,
+      "matchedSkills": [
+        "manual testing",
+        "regression testing",
         "playwright",
-        "javascript",
         "typescript",
+        "test case",
         "api testing"
       ],
-      "applyLink": "https://www.shine.com/jobs/senior-qa-automation-engineer-selenium-playwright-java/meeden-labs-private-limited/20047561",
-      "cityPriority": 1,
+      "applyLink": "https://www.shine.com/jobs/qa-engineer-qa-testing-manual-testing-integration-testing/intellics-global-services-private-limited/20059178",
+      "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
@@ -131,15 +151,20 @@
       ]
     },
     {
-      "title": "SAP Automation Test Engineer - UFT",
-      "company": "Aparajita Consultancy services",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 68,
+      "title": "QA Engineer - QA Testing, Manual Testing, Integration Testing",
+      "company": "INTELLICS GLOBAL SERVICES PRIVATE LIMITED",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 83,
       "matchedSkills": [
+        "manual testing",
+        "regression testing",
+        "playwright",
+        "typescript",
+        "test case",
         "api testing"
       ],
-      "applyLink": "https://in.jooble.org/jdp/-1436750649729022410",
-      "cityPriority": 1,
+      "applyLink": "https://www.shine.com/jobs/qa-engineer-qa-testing-manual-testing-integration-testing/intellics-global-services-private-limited/20059178",
+      "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
@@ -149,15 +174,20 @@
       ]
     },
     {
-      "title": "SAP Automation Test Engineer - UFT",
-      "company": "Aparajita Consultancy services",
-      "location": "Bengaluru, Karnataka",
-      "matchScore": 68,
+      "title": "QA Engineer - QA Testing, Manual Testing, Integration Testing",
+      "company": "INTELLICS GLOBAL SERVICES PRIVATE LIMITED",
+      "location": "Hyderabad, Telangana",
+      "matchScore": 83,
       "matchedSkills": [
+        "manual testing",
+        "regression testing",
+        "playwright",
+        "typescript",
+        "test case",
         "api testing"
       ],
-      "applyLink": "https://in.jooble.org/jdp/-1436750649729022410",
-      "cityPriority": 1,
+      "applyLink": "https://www.shine.com/jobs/qa-engineer-qa-testing-manual-testing-integration-testing/intellics-global-services-private-limited/20059178",
+      "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
       "experienceMatch": true,
@@ -167,14 +197,14 @@
       ]
     },
     {
-      "title": "Sr Quality Assurance",
-      "company": "Syniverse",
+      "title": "QA Engineer | Hyderabad",
+      "company": "KT2i & Aktionable AI.",
       "location": "Hyderabad, Telangana",
       "matchScore": 68,
       "matchedSkills": [
         "test case"
       ],
-      "applyLink": "https://in.linkedin.com/jobs/view/sr-quality-assurance-at-syniverse-4487476362",
+      "applyLink": "https://in.linkedin.com/jobs/view/qa-engineer-hyderabad-at-kt2i-aktionable-ai-4487895373",
       "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
@@ -201,12 +231,12 @@
       ]
     },
     {
-      "title": "Quality Assurance Lead - Quality Leader, Data Annotation, MAP Annotation",
-      "company": "SELECTIONS HR SERVICES PRIVATE LIMITED",
+      "title": "Validation Test Engineer - IEC",
+      "company": "Siera IT Services Private Limited",
       "location": "Hyderabad, Telangana",
       "matchScore": 65,
       "matchedSkills": [],
-      "applyLink": "https://www.shine.com/jobs/quality-assurance-lead-quality-leader-data-annotation-map-annotation/selections-hr-services-private-limited/20061942",
+      "applyLink": "https://www.shine.com/jobs/validation-test-engineer-iec/siera-it-services-private-limited/20059050",
       "cityPriority": 2,
       "roleMatch": true,
       "locationMatch": true,
